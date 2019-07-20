@@ -13,4 +13,11 @@ export class TopicsComponent implements OnInit {
   ngOnInit() {
   }
 
+  clicked() {
+    this.topicsServicece.getTopic('jhh');
+  }
+
+  addClicked() {
+    this.topicsServicece.newTopic('jhh');
+  }
 }

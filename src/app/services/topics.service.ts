@@ -6,5 +6,15 @@ import {Socket} from 'ngx-socket-io';
 })
 export class TopicsService {
 
-  constructor(private socket: Socket) { }
+  currentDocuments = this.socket.fromEvent<Document>('topics');
+  constructor(private socket: Socket) {this.currentDocuments.subscribe(data => console.log(data));
+  }
+
+  getTopic(id: string) {
+    this.socket.emit('getTopic', id);
+  }
+
+  newTopic(id: string) {
+    this.socket.emit('newTopic', id);
+  }
 }
