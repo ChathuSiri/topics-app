@@ -1,7 +1,16 @@
-<ng-container *ngFor="let topic of topics|async">
-  <span >{{topic | json}}</span>
-  <button (click)="upvoteTopic(topic.name)">upvote</button>
-  <button (click)="downvoteTopic(topic.name)">downvote</button>
-  <br>
-</ng-container>
-
+<table class="a-table">
+  <ng-container *ngFor="let topic of topics|async">
+    <tr>
+      <td>{{topic.name}}</td>
+      <td>
+        <button (click)="upvote(topic.name)">upvote</button>
+      </td>
+      <td>
+        {{topic.votes}}
+      </td>
+      <td>
+        <button (click)="downvote(topic.name)">downvote</button>
+      </td>
+    </tr>
+  </ng-container>
+</table>
