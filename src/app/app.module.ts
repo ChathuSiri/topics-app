@@ -14,8 +14,7 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
   declarations: [
     AppComponent,
     TopicsComponent,
-    AddTopicComponent,
-    TopicComponent
+    AddTopicComponent
   ],
   imports: [
     BrowserModule,
