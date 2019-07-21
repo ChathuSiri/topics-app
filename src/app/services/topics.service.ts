@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import {Socket} from 'ngx-socket-io';
+import {Topic} from '../model/topic';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TopicsService {
 
-  currentDocuments = this.socket.fromEvent<Document>('topics');
-  constructor(private socket: Socket) {this.currentDocuments.subscribe(data => console.log(data));
+  currentTopics = this.socket.fromEvent<string>('topics').pipe(map(data => JSON.parse(data)));
+  constructor(private socket: Socket) {this.currentTopics.subscribe(data => console.log(data));
   }
 
   getTopic(id: string) {
@@ -16,5 +18,13 @@ export class TopicsService {
 
   newTopic(id: string) {
     this.socket.emit('newTopic', id);
+  }
+
+  upvoteTopic(id: string) {
+    this.socket.emit('upvote', id);
+  }
+
+  downvoteTopic(id: string) {
+    this.socket.emit('downvote', id);
   }
 }
