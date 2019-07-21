@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {TopicsService} from '../../services/topics.service';
-import {Observable} from 'rxjs';
-import {Topic} from '../../model/topic';
 
 @Component({
   selector: 'app-topics',
@@ -10,7 +8,6 @@ import {Topic} from '../../model/topic';
 })
 export class TopicsComponent implements OnInit {
 
-  topics = Observable< Topic[]>
   constructor(private topicsServicece: TopicsService) { }
 
   ngOnInit() {
