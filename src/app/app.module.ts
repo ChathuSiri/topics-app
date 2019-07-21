@@ -6,6 +6,7 @@ import { TopicsComponent } from './components/topics/topics.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { AddTopicComponent } from './components/add-topic/add-topic.component';
 import {FormsModule} from '@angular/forms';
+import { TopicComponent } from './components/topic/topic.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
@@ -13,7 +14,8 @@ const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
   declarations: [
     AppComponent,
     TopicsComponent,
-    AddTopicComponent
+    AddTopicComponent,
+    TopicComponent
   ],
   imports: [
     BrowserModule,

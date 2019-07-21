@@ -1,3 +1,7 @@
-<p>topics works!</p>
-<button (click)="clicked()">click?</button>
-<button (click)="addClicked()">add?</button>
+<ng-container *ngFor="let topic of topics|async">
+  <span >{{topic | json}}</span>
+  <button (click)="upvoteTopic(topic.name)">upvote</button>
+  <button (click)="downvoteTopic(topic.name)">downvote</button>
+  <br>
+</ng-container>
+
