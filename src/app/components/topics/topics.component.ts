@@ -11,14 +11,14 @@ import {map} from 'rxjs/operators';
 })
 export class TopicsComponent implements OnInit {
 
-  topics: Observable< Topic[]>;
+  topics: Observable< {}[]>;
 
   constructor(private topicsService: TopicsService) {
   }
 
   ngOnInit() {
     this.topics = this.topicsService.currentTopics.pipe(map(data => Object.values(data)),
-      map(data => data.sort((topic1, topic2) => topic2.votes - topic1.votes)));
+      map(data => data.sort((topic1: Topic, topic2: Topic) => topic2.votes - topic1.votes)));
   }
 
   upvote(topicName: string) {
