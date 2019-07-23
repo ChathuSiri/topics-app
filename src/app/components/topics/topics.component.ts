@@ -11,21 +11,14 @@ import {map} from 'rxjs/operators';
 })
 export class TopicsComponent implements OnInit {
 
-  topics: Observable< string[]>;
+  topics: Observable< Topic[]>;
 
   constructor(private topicsService: TopicsService) {
   }
 
   ngOnInit() {
-    this.topics = this.topicsService.currentTopics.pipe(map(data => Object.values(data)));
-  }
-
-  clicked() {
-    this.topicsService.getTopic('jhh');
-  }
-
-  addClicked() {
-    this.topicsService.newTopic('jhh');
+    this.topics = this.topicsService.currentTopics.pipe(map(data => Object.values(data)),
+      map(data => data.sort((topic1, topic2) => topic2.votes - topic1.votes)));
   }
 
   upvote(topicName: string) {

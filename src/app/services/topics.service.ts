@@ -9,7 +9,7 @@ import {map} from 'rxjs/operators';
 export class TopicsService {
 
   currentTopics = this.socket.fromEvent<string>('topics').pipe(map(data => JSON.parse(data)));
-  constructor(private socket: Socket) {this.currentTopics.subscribe(data => console.log(data));
+  constructor(private socket: Socket) {
   }
 
   getTopic(id: string) {
